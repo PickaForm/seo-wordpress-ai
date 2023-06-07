@@ -1,0 +1,40 @@
+/**
+ * 
+ * SEO Wordpress AI | By Team DnL
+ * 
+ */
+.swa-submit-button {
+    font-size: 16px !important;
+    background-color: #00aaee !important;
+    color: #fff !important;
+    padding: 10px 20px !important;
+    border-radius: 5px !important;
+    cursor: pointer;
+    transition: all 0.5s !important;
+    margin-top: 50px !important;
+}
+
+.swa-submit-button:hover {
+    color: #00aaee !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 32px #777777;
+    transition: all 0.5s !important;
+}
+
+.swa-instructions {
+    font-size: 16px;
+    background-color: #ffffff;
+    border: solid 2px #00aaee;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 50px #aaaaaa;
+    margin-bottom: 50px;
+}
+
+#swa_api_key {
+    width: 500px;
+}
+
+#swa_encryption_key {
+    width: 500px;
+}
