@@ -434,10 +434,6 @@ function swa_generate_seo_data($post_title, $post_content) {
     $encrypted_openai_api_key = get_option('swa_api_key');
     $openai_api_key = swa_decrypt_api_key_with_key($encrypted_openai_api_key, get_option('swa_encryption_key'));
 
-    // Limit the post content to avoid OpenAI limit of 4097 tokens
-    // We'll remove this limitation in the next version of the plugin
-    $post_content = substr($post_content, 0, 6000);
-
     // Prepare API request payload
     swa_log("... Requesting OpenAI API:");
     $payload = [
@@ -453,6 +449,7 @@ function swa_generate_seo_data($post_title, $post_content) {
 
     // Define the gateway to use to transmit data to OpenAI
     $seo_gateway_url = 'https://app.seowordpress.ai/swa';
+    
     $response = wp_remote_post($seo_gateway_url, [
         'headers' => $headers,
         'timeout' => 180, // 3mn timeout because OpenAI can take a long time to answer

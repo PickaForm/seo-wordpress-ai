@@ -108,7 +108,7 @@ window.onload = function () {
             createNotification({
                 message: MSG_CHAT_GPT_RESULTS,
                 maxWidth: 600,
-                duration: 5000
+                duration: 10000
             }).style.zIndex = 10000
 
             const postId = this.getAttribute("data-post-id");
