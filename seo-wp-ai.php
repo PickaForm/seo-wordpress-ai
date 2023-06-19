@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: SEO Wordpress AI | By Team DnL
-Plugin URI: https://seowordpress.ai
+Plugin Name: SEO WP AI | By Team DnL
+Plugin URI: https://seowp.ai
 Description: This plugin uses OpenAI API to auto-fill the SEO fields of your Yoast plugin. Save a huge amount of time building SEO for you or your customers!
 Version: 1.0
 Author: Team DnL
-Doc: https://seowordpress.ai/documentation
-Author URI: https://seowordpress.ai
+Doc: https://seowp.ai/documentation
+Author URI: https://seowp.ai
 */
 
 
@@ -35,7 +35,7 @@ function swa_styles() {
     wp_enqueue_style( 'kissjs-webfonts', 'https://kissjs.net/resources/lib/kissjs/webfonts/fontawesome-all.min.css' );
 
     // Plugin CSS
-    wp_enqueue_style( 'swa-styles', plugins_url( './seo-wordpress-ai.css', __FILE__ ) );
+    wp_enqueue_style( 'swa-styles', plugins_url( './seo-wp-ai.css', __FILE__ ) );
 }
 add_action( 'admin_enqueue_scripts', 'swa_styles' );
 
@@ -46,7 +46,7 @@ add_action( 'admin_enqueue_scripts', 'swa_styles' );
  * 
  */
 function swa_add_seo_fill_button_script() {
-    wp_register_script('swa-script', plugins_url( './seo-wordpress-ai.js', __FILE__ ), array(), '1.0', true);
+    wp_register_script('swa-script', plugins_url( './seo-wp-ai.js', __FILE__ ), array(), '1.0', true);
     wp_enqueue_script('swa-script');
 }
 add_action('admin_enqueue_scripts', 'swa_add_seo_fill_button_script');
@@ -79,7 +79,7 @@ function my_plugin_activation_hook() {
         && !defined('WPSEO_FILE')
     ) {
        deactivate_plugins(plugin_basename(__FILE__));
-       wp_die('Your plugin require Yoast SEO or Yoast SEO Premium. Please install and enable Yoast to be able to use our SEO Wordpress AI plugin.');
+       wp_die('Your plugin require Yoast SEO or Yoast SEO Premium. Please install and enable Yoast to be able to use our SEO WP AI plugin.');
    }
 }
 register_activation_hook(__FILE__, 'my_plugin_activation_hook');
@@ -92,8 +92,8 @@ register_activation_hook(__FILE__, 'my_plugin_activation_hook');
  */
 function swa_add_options_page() {
     add_options_page( 
-        __('SEO Wordpress AI', 'swa'),
-        __('SEO Wordpress AI', 'swa'),
+        __('SEO WP AI', 'swa'),
+        __('SEO WP AI', 'swa'),
         'manage_options',
         'swa',
         'swa_options_page'
@@ -191,10 +191,10 @@ function swa_section_callback() {
         <br>The key will be encrypted using your custom secret phrase before being saved to your Wordpress database.
         <br>
         <br>To create your OpenAI account and get your Open AI key, please check the following tutorial:
-        <br><a href="https://seowordpress.ai/documentation" target="_new">How do I get my Open API key?</a>
+        <br><a href="https://seowp.ai/documentation" target="_new">How do I get my Open API key?</a>
         <br>
         <br>If you like our work, please, consider helping us building the next version of it:
-        <br><a href="https://seowordpress.ai/#download" target="_new">Help us make this plugin great!</a>
+        <br><a href="https://seowp.ai/#download" target="_new">Help us make this plugin great!</a>
         <br>
         <br>By supporting us ❤, you can help us build a plugin that will automatically check 100% of SEO constraints in 1 click 👍.
     </div>
@@ -224,7 +224,7 @@ add_filter('plugin_action_links', 'swa_plugin_action_links', 10, 2);
  */
 function add_plugin_documentation_link($plugin_meta, $plugin_file, $plugin_data, $status) {
     if ($plugin_file === plugin_basename(__FILE__)) {
-        $documentation_link = 'https://seowordpress.ai/documentation';
+        $documentation_link = 'https://seowp.ai/documentation';
         $plugin_meta[] = '<a href="' . esc_url($documentation_link) . '">Documentation</a>';
     }
     return $plugin_meta;
@@ -324,7 +324,7 @@ function swa_decrypt_api_key_with_key($encrypted_api_key, $encryption_key) {
  * 
  */
 function swa_fill_seo_fields() {
-    swa_log("... Starting SEO Wordpress AI");
+    swa_log("... Starting SEO WP AI");
 
     // Check permissions
     swa_log("... Checking permissions:");
@@ -448,7 +448,7 @@ function swa_generate_seo_data($post_title, $post_content) {
     ];
 
     // Define the gateway to use to transmit data to OpenAI
-    $seo_gateway_url = 'https://app.seowordpress.ai/swa';
+    $seo_gateway_url = 'https://app.seowp.ai/swa';
     
     $response = wp_remote_post($seo_gateway_url, [
         'headers' => $headers,
@@ -554,7 +554,7 @@ function swa_add_seo_fill_button() {
             id="swa_seo_fill_button"    
             style="display:none; margin: 10px 16px 10px 16px; width: 170px;"
             class="button button-primary"
-            value="⚡ SEO Wordpress AI"
+            value="⚡ SEO WP AI"
             data-post-id="' . $post->ID . '"
         >
     ';

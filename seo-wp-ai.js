@@ -1,6 +1,6 @@
 /**
  * 
- * SEO Wordpress AI | By Team DnL
+ * SEO WP AI | By Team DnL
  * 
  * Javascript UI built on top of KissJS - Keep It Simple Stupid Javascript
  * https://kissjs.net
